@@ -2,7 +2,7 @@
 #define PIXIE_H
 
 #define _GNU_SOURCE
-#define _POSIX_SOURCE 200809L
+//#define _POSIX_SOURCE 200809L
 
 #include <string.h>
 

@@ -10,6 +10,9 @@ INC=-Ilibwps -I. -Ilwe
 DISABLED_WARNINGS= \
  -Wno-unused-variable \
  -Wno-unused-function \
+ -Wno-stringop-truncation \
+ -Wno-restrict \
+ -Wno-cpp \
  -Wno-pointer-sign
 
 CFLAGS=-DCONF_DIR='"$(CONFDIR)"' $(CFLAGS_USER) $(DISABLED_WARNINGS)
