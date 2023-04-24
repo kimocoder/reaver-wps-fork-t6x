@@ -20,16 +20,63 @@ class Data():
 		self.wpa_psk = ''
 
 	def __repr__(self):
-		return \
-			"pke = " + self.pke + "\n" \
-			"pkr = " + self.pkr + "\n" \
-			"e_hash1 = " + self.e_hash1 + "\n" \
-			"e_hash2 = " + self.e_hash2 + "\n" \
-			"authkey = " + self.authkey + "\n" \
-			"e_nonce = " + self.e_nonce + "\n" \
-			"e_snonce1 = " + self.e_snonce1 + "\n" \
-			"e_snonce2 = " + self.e_snonce2 + "\n" \
-			"wpa_psk = " + self.wpa_psk + "\n"
+		return (
+			(
+				(
+					(
+						(
+							(
+								(
+									(
+										(
+											(
+												(
+													(
+														(
+															(
+																(
+																	(
+																		f"pke = {self.pke}"
+																		+ "\n"
+																		"pkr = "
+																	)
+																	+ self.pkr
+																)
+																+ "\n"
+																"e_hash1 = "
+															)
+															+ self.e_hash1
+														)
+														+ "\n"
+														"e_hash2 = "
+													)
+													+ self.e_hash2
+												)
+												+ "\n"
+												"authkey = "
+											)
+											+ self.authkey
+										)
+										+ "\n"
+										"e_nonce = "
+									)
+									+ self.e_nonce
+								)
+								+ "\n"
+								"e_snonce1 = "
+							)
+							+ self.e_snonce1
+						)
+						+ "\n"
+						"e_snonce2 = "
+					)
+					+ self.e_snonce2
+				)
+				+ "\n"
+				"wpa_psk = "
+			)
+			+ self.wpa_psk
+		) + "\n"
 
 def process_wpa_supplicant_line(data, line):
 	def get_hex(line):
@@ -68,8 +115,7 @@ def got_all_pixie_data(data):
 	return data.pke and data.pkr and data.e_nonce and data.authkey and data.e_hash1 and data.e_hash2
 
 def get_pixie_cmd(data):
-	return "pixiewps --pke %s --pkr %s --e-hash1 %s --e-hash2 %s --authkey %s --e-nonce %s" % \
-		(data.pke, data.pkr, data.e_hash1, data.e_hash2, data.authkey, data.e_nonce)
+	return f"pixiewps --pke {data.pke} --pkr {data.pkr} --e-hash1 {data.e_hash1} --e-hash2 {data.e_hash2} --authkey {data.authkey} --e-nonce {data.e_nonce}"
 
 if __name__ == '__main__':
 
@@ -85,6 +131,6 @@ if __name__ == '__main__':
 	if got_all_pixie_data(data):
 		pixiecmd = get_pixie_cmd(data)
 
-		print(("running %s" % pixiecmd))
+		print(f"running {pixiecmd}")
 		os.execlp('/bin/sh', '/bin/sh', '-c', pixiecmd)
 
